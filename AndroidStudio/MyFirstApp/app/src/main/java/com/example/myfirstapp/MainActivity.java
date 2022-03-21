@@ -3,6 +3,7 @@ package com.example.myfirstapp;
 import android.support.v7.app.AppCompatActivity;
 //import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,36 +40,24 @@ public class MainActivity extends AppCompatActivity {
         strVolume = textVolume.getText().toString();
         strCasca = textCasca.getText().toString();
 
-//        // ACAO QUE O BOTÃO IRÁ FAZER (VARIAS VEZES)
-//        acaoCalc.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View view)
-//            {
-//                raio = Double.valueOf(textRaio.getText().toString());
-//
-//                perimetro = (2 * Math.PI*raio);
-//                area = (Math.PI * Math.pow(raio,2));
-//                volume = ( (4.0 / 3.0) * Math.PI * raio * raio * raio);
-//                casca = (4 * Math.PI * Math.pow(raio, 2));
-//                textPerimetro.setText(strPerimetro + String.format("%.2f",perimetro) + " cm");
-//                textArea.setText(strArea + String.format("%.2f",area) + " cm²");
-//                textCasca.setText(strCasca+ String.format("%.2f",casca) + " cm²");
-//                textVolume.setText(strVolume + String.format("%.2f",volume) + " cm³");
-//            }
-//        });
     }
 
-    public void calcularValores(View view){
-        raio = Double.valueOf(textRaio.getText().toString());
-        perimetro = (2 * Math.PI*raio);
-        area = (Math.PI * Math.pow(raio,2));
-        volume = ( (4.0 / 3.0) * Math.PI * raio * raio * raio);
-        casca = (4 * Math.PI * Math.pow(raio, 2));
-
-        textPerimetro.setText(strPerimetro + String.format("%.2f",perimetro) + " cm");
-        textArea.setText(strArea + String.format("%.2f",area) + " cm²");
-        textCasca.setText(strCasca+ String.format("%.2f",casca) + " cm²");
-        textVolume.setText(strVolume + String.format("%.2f",volume) + " cm³");
+    public void calcularResultado(View view){
+        if(!TextUtils.isEmpty(textRaio.getText().toString())){
+            raio = Double.valueOf(textRaio.getText().toString());
+            perimetro = (2 * Math.PI * raio);
+            area = (Math.PI * Math.pow(raio, 2));
+            volume = (4 / 3 * Math.PI * Math.pow(raio, 3));
+            casca = (4 * Math.PI * Math.pow(raio, 2));
+            textPerimetro.setText(strPerimetro + String.format("%.2f", perimetro) + " cm");
+            textArea.setText(strArea + String.format("%.2f", area) + " cm²");
+            textCasca.setText(strCasca + String.format("%.2f", casca) + " cm²");
+            textVolume.setText(strVolume + String.format("%.2f", volume) + " cm³");
+        }else{
+            textPerimetro.setText(strPerimetro);
+            textArea.setText(strArea);
+            textCasca.setText(strCasca);
+            textVolume.setText(strVolume);
+        }
     }
 }
