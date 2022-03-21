@@ -67,15 +67,18 @@
         android:layout_marginBottom="20dp"
         android:text="  Volume:   "
         android:textColor="@color/purple_200"
-        android:textSize="25sp"></TextView>
+        android:textSize="25sp">
+
+    </TextView>
 
     <Button
         android:id="@+id/buttonCalc"
         android:layout_width="200sp"
         android:layout_height="60sp"
-        android:layout_margin="3sp"
         android:layout_gravity="center"
+        android:layout_margin="3sp"
         android:background="@color/purple_200"
+        android:onClick="calcularValores"
         android:text="Calcular"
         android:textSize="30sp"
         android:textStyle="bold">
