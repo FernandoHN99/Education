@@ -1,27 +1,33 @@
 public class Conta {
     //Atributos da nossa classe
-    int numero;
-    String titular;
-    double saldo;
-    String cpf;
+    private int numero;
+    private double saldo;
+
+    public Conta(){}; //EU QUE FIZ
+
+    public Conta(int numero){
+        this.numero = numero;
+        saldo = 0;
+    }
 
     //Métodos da classe
-    void visualizarSaldo(){
-        System.out.println("Saldo atual na conta " + numero+ ": R$" + saldo);
+    public void visualizarSaldo(){
+        System.out.println("Saldo atual na conta " + numero + ": R$" + saldo);
     }
-    boolean depositar(double valor){
+
+    public boolean depositar(double valor){
         if(valor < 0) 
             return false;
         this.saldo += valor;
         return true;
     }
-    boolean sacar(double valor){
+    public boolean sacar(double valor){
         if(valor > saldo) return false;
         if(valor < 0) return false;
         this.saldo -= valor;
         return true;
     }
-    boolean transferirDinheiro(double valor, Conta destino){
+    public boolean transferirDinheiro(double valor, Conta destino){
         if(!sacar(valor)) return false;
         if(!destino.depositar(valor)) return false;
         return true;
