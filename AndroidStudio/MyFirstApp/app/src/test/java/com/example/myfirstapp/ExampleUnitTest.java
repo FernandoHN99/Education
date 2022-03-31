@@ -1,4 +1,4 @@
-package com.example.myfirstapp;
+package com.example.CircleMath;
 
 import org.junit.Test;
 
