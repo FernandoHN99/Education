@@ -3,6 +3,8 @@ public class Conta {
     private double saldo;
     private Usuario user;
 
+    public Conta(){}
+
     public Conta(String idConta, Usuario user){
         this.idConta = idConta;
         this.user = user;
