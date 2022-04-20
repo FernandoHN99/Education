@@ -45,4 +45,7 @@ public class Usuario {
         this.listQRCodes.add(QRCode);
     }
 
+    public Integer checkQRCode(String QRCode){
+        return this.listQRCodes.indexOf(QRCode);
+    }
 }

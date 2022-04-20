@@ -33,7 +33,8 @@ public class Sistema {
         "Opção 2 - Adicionar Saldo\n" +
         "Opção 3 - Retirar Dinheiro\n" +
         "Opção 4 - Gerar um QRCode\n" +
-        "Opção 5 - Visualizar Registros\n");
+        "Opção 5 - Realizar Pagamento\n" +
+        "Opção 6 - Visualizar Registros\n");
         System.out.println(strMenu);
     }
 
@@ -52,6 +53,9 @@ public class Sistema {
                 receptorQRCode(dataBase);
                 break;
             case "5":
+                realizarPagamento();
+                break;
+            case "6":
                 visualizarResgistros(dataBase);
                 break;
             default:
@@ -85,12 +89,12 @@ public class Sistema {
         int i = 1;
 
         while(acc != null){
-            strValores += ("\t\t USUÁRIO " + acc.getIdConta() + "\t\t\n" +  
+            strValores += ("\n\t\t USUÁRIO " + acc.getIdConta() + "\t\t\n" +  
             "Nome: " + acc.getUser().getNome() + "\n" +
             "Email: " + acc.getUser().getEmail() + "\n" +
             "Senha: " + acc.getUser().getSenha() + "\n" +
             "QRCodes: " + acc.getUser().getListQRCodes()+ "\n" +
-            "Saldo: " + acc.getSaldo() + "\n\n");
+            "Saldo: " + acc.visualizarSaldo() + "\n\n");
 
             i += 1;
             acc = getContaById("#"+i);
@@ -130,9 +134,9 @@ public class Sistema {
 
     private void receptorQRCode(Map<String, Object> mapDataBase){
         System.out.println("Digite o ID da Conta sem # que irá receber o pagamento");
-        String id = input.next();
+        String id = ("#" + input.next());
         
-        Conta acc = getContaById("#" + id);
+        Conta acc = getContaById(id);
         if(acc != null){
             System.out.println("Digite a quantia (USUÁRIO " + acc.getIdConta()+ " - " + acc.getUser().getNome() + ")");
             double valor = input.nextDouble();
@@ -140,6 +144,36 @@ public class Sistema {
             if(valor >= 0)
                 acc.getUser().setListQRCodes(gerarQRCode(id, acc.getUser().getNome(), valor)); 
             
+        }
+    }
+
+    private void realizarPagamento(){
+        System.out.println("Digite o ID da Conta do Pagador sem #");
+        String idTransfer = "#" + input.next();
+        Conta accTransfer = getContaById(idTransfer);
+        System.out.println("Saldo: " + accTransfer.visualizarSaldo());
+        
+        if(accTransfer != null){
+            System.out.println("Digite o ID da Conta do Receptor sem #");
+            String idReceptor = ("#" + input.next());
+            Conta accReceptor = getContaById(idReceptor);
+            System.out.println("QRCodes: " + accReceptor.getUser().getListQRCodes());
+            
+            if(accReceptor != null){
+                System.out.println("Digite o valor a ser Pago para "+ accReceptor.getUser().getNome());
+                Double valor = input.nextDouble();
+                String strQrcode = gerarQRCode(idReceptor, accReceptor.getUser().getNome(), valor);
+                int index = accReceptor.getUser().checkQRCode(strQrcode);
+
+                if(index != -1){
+                    if(accTransfer.sacar(valor) && accReceptor.depositar(valor)){
+                        accReceptor.getUser().getListQRCodes().remove(index);
+                        System.out.println("Transferência Realizada com sucesso!\n");
+                        System.out.println("Pressione qualquer tecla para sair!");
+                        String wait = input.next();
+                    }
+                }
+            }
         }
     }
 
@@ -174,8 +208,5 @@ public class Sistema {
         // String transacao = Transacoes.gerarQRCode(conta2.getIdConta() , conta2.getUser().getNome(), 200);
         // System.out.println("QRCode Conta2: " + transacao);
 
-    public boolean realizarPagamento(){
-        return true;
-    }
 
 }
