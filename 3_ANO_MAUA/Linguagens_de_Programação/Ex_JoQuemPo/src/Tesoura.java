@@ -1,11 +1,11 @@
 public class Tesoura extends Jogada{
 
     public Tesoura() {
-        super("Papel");
+        super(Enum.PAPEL, Enum.LAGARTO);
     }
     @Override
-    public String getTipo() {
-        return "Tesoura";
+    public Enum getTipo() {
+        return Enum.TESOURA;
     }
         
     
