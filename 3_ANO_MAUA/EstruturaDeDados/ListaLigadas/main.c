@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
+#include "Util.c"
+#include "Flow.c"
 
- int gFree = 4;
- int gHead = 7;
+int gFree, gHead;
 
 int allocateObject(int vetNext[]){
     if(gFree ==-1 ){
@@ -45,77 +45,46 @@ void removeElement(int vetPrev[], int vetKey[], int vetNext[], int position){
     vetKey[position] = -1;
     vetPrev[position] = -1;
     freeObject(vetNext, position);
-    
-
 }
 
-void showList(int vet[]){
+void showList(int vet[], int n){
     int j;
-    for(j=0; j<8; j++){
-        if(j ==0){
-            printf("[%i, ", vet[j]);
-        }
-        else if(j !=7){
+    printf("[");
+    for(j=0; j<n; j++){
+        if(j != (n-1)){
             printf("%i, ", vet[j]);
         }else{
-             printf("%i]\n", vet[j]);
+            printf("%i", vet[j]);
         }
-    }  
-}
-
-void showOptions(){
-    int aux;
-    char strMenu[] = "\n\t MENU DE OPCOES \n\n Opcao 1 - Adicionar elemento\n Opcao 2 - Remover elemento\n Opcao 3 - Visualizar todas Listas\n Opcao 4 - Sair\n\n";
-    printf(strMenu);
-    scanf("%i", &aux);
     }
-
-void callOptions(int option, int vetPrev[], int vetKey[], int vetNext[]){
-    int value;
-    switch (option) {
-        case 1:
-            printf("\nValor a ser adicionado na Posicao %i: ", gFree);
-            scanf("%i", &value);
-            addElement(vetPrev, vetKey, vetNext, value);
-            showList(vetKey);
-            break;
-        case 2:
-            printf("\nValor a ser retirado: ");
-            scanf("%i", &value);
-            removeElement(vetPrev, vetKey, vetNext, value);
-            showList(vetKey);
-            break;
-        case 3:
-            showList(vetNext);
-            showList(vetKey);
-            showList(vetPrev);
-            break;
-    }
-}
-
-void clrscr()
-{
-    system("@cls||clear");
+    printf("]");
 }
 
 
+int Main(){
 
-int main(){
+    //Limpando Tela
+    clrscr();
 
-    int vetNext[] = {-1, 3, 0,  8,  2,  1, 5,  6};
-    int vetKey[]  = {-1, 4, 1, -1, 16, -1, 9, -1};
-    int vetPrev[] = {-1, 5, 2, -1, 7,  -1, 0, -1}; 
+    // Montando Listas
+    int n = sizeArray();
+    int vetNext[n], vetKey[n], vetPrev[n];
+    fillList(vetKey, vetPrev,n);
+    inputUser(vetNext, n);
 
-    int option = 3;
+    // Fluxo das operacoes basicas de Lista Ligadas
+    int optionInt = 3;
+    char optionChar[10];
 
-    while(option!=4){
+    while(optionInt!=4){
         clrscr();
         showOptions();
-        printf("Digite a Opcao Desejada - (S)air: ");
-        scanf("%i", &option);
-        callOptions(option, vetPrev, vetKey, vetNext);
-        
+        printf("Digite a Opcao Desejada: ");
+        readString(optionChar);
+        optionInt = atoi(optionChar);
+        callOptions(optionInt, vetPrev, vetKey, vetNext, n);
     }
+
     return 0;
 }
 
