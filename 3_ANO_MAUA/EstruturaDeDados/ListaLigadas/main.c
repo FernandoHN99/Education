@@ -61,7 +61,7 @@ void showList(int vet[], int n){
 }
 
 
-int Main(){
+int main(){
 
     //Limpando Tela
     clrscr();
