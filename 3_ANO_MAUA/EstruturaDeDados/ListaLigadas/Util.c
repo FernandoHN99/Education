@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Flow.c"
-#include "Main.c"
 
 
 int vetContains(int vetNext[], int value, int sizeVet){

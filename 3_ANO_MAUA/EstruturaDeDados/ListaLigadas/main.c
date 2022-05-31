@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Util.c"
-#include "Flow.c"
+#include "util.c"
+#include "flow.c"
 
 int gFree, gHead;
 
@@ -51,6 +51,7 @@ void showList(int vet[], int n){
     int j;
     printf("[");
     for(j=0; j<n; j++){
+    for(j=0; j<n; j++){
         if(j != (n-1)){
             printf("%i, ", vet[j]);
         }else{
@@ -84,7 +85,6 @@ int main(){
         optionInt = atoi(optionChar);
         callOptions(optionInt, vetPrev, vetKey, vetNext, n);
     }
-
     return 0;
 }
 

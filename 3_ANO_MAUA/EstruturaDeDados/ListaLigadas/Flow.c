@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Util.c"
-
-
 
 void inputUser(int vetNext[], int n){
     int i=1, valuePast, aux=-1;
