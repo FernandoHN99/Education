@@ -1,7 +1,8 @@
 public class Conta {
     private int idConta;
     private double saldo;
-    private static int totalContas = 0;
+    private static int totalContas = 3;
+
     public Conta() {
         this.saldo = 0;
         this.idConta = totalContas;

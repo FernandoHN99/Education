@@ -82,7 +82,8 @@ void callOptions(int option, int vetPrev[], int vetKey[], int vetNext[]){
             if(gFree != -1){
                 flowAddElement(vetPrev, vetKey, vetNext);
                 // printf("\n");
-                // showAllLists(vetPrev, vetKey, vetNext);
+                // showList(vetNext);
+                showAllLists(vetPrev, vetKey, vetNext);
             }else{
                 printf("\n\nNao eh possivel adicionar elementos!");
             }

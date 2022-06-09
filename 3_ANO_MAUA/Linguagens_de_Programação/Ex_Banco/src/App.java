@@ -5,6 +5,9 @@ public class App {
                                        "456789", 
                                        "murilo.carvalho@maua.br", 
                                         new Conta(1234));
+        cliente1.nome = "matheus";
+        cliente1.setNome("matheus");
+        System.out.println(cliente1.getNome());
 
         Cliente cliente2 = new Cliente("Fernando", 
         "49243017870", 
