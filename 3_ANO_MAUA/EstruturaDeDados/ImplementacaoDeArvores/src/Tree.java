@@ -1,6 +1,6 @@
 public class Tree {
     Node_Tree root; 
-    int size; 
+    public static int size; 
     
     public Tree() {
         this.root = null; 
@@ -27,7 +27,6 @@ public class Tree {
         else 
             return false;
     }
-
     
 
 }

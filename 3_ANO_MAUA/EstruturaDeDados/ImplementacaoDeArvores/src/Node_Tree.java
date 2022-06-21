@@ -1,3 +1,7 @@
+import java.security.SecureRandomParameters;
+
+import javax.swing.plaf.synth.SynthScrollBarUI;
+
 public class Node_Tree {
     Integer item; 
     Node_Tree parent; 
@@ -9,16 +13,14 @@ public class Node_Tree {
         this.parent = null; 
         this.firstChild = null; 
         this.next = null;
+        Tree.size+=1;
     }
 
-    public Node_Tree parent() { 
-        if (this.parent == null) 
-            return null;
-        else 
-        return (this.parent );
+    public Node_Tree Pai() { 
+        return this.parent;
     }
 
-    public void imprime_Parent() { 
+    public void imprime_Pai(){ 
         if (this.parent != null) 
             System.out.println("Pai: " + this.parent.item );
         else 
@@ -28,16 +30,31 @@ public class Node_Tree {
 
     public void imprimeFilhos() { 
         if (this.firstChild == null) 
-            System.out.println("Node nao tem filhos....");
+            System.out.println("Nó nao tem filhos....");
         else {
             Node_Tree trab = this.firstChild; 
-            while (trab != null ) {
-                System.out.println(trab.item); trab = trab.next;
+            while (trab != null) {
+                System.out.println(trab.item); 
+                trab = trab.next;
             }  
         }
     }
+        
+    public void imprimeFilhosFolhas(){ 
+        Boolean aux = false;
+        Node_Tree trab = this.firstChild; 
+        while(trab != null){
+            if(!trab.EhInterno()){
+                aux = true;
+                System.out.println(trab.item); 
+            }
+            trab = trab.next;
+        }
+        if(!aux)
+            System.out.println("Nó nao tem filhos folhas....");
+    }
 
-    public boolean isInternal() { 
+    public boolean EhInterno() { 
         if (this.firstChild != null) 
             return true;
         else 
@@ -66,19 +83,45 @@ public class Node_Tree {
 
     public void preorder(){ 
         System.out.println(this.item);
-        Node_Tree trab = this.firstChild;
-        while(trab != null){ 
-            trab.preorder(); 
-            trab = trab.next;
+
+        Node_Tree noFilho = this.firstChild;
+        while(noFilho != null){ 
+            noFilho.preorder(); 
+            noFilho = null;
+        }
+        if(this.next != null){
+            this.next.preorder();
         }
     }
 
-    public void posorder(){ 
-        Node_Tree trab = this.firstChild;
-        while(trab != null){
-            trab.posorder(); 
-            trab = trab.next;
+    // public void posorder(){ 
+    //     System.out.println(this.item);
+    //     if(this.Pai() != null && this.parent != ){
+    //         this.parent.posorder();
+    //     }
+    //     Node_Tree noIrmao = this.next;
+    //     while(noIrmao != null){
+    //         noIrmao = noIrmao.firstChild;
+    //         noIrmao.posorder(); 
+    //     }
+
+    // }
+
+    public int preorderMedia(int soma){
+        soma += this.item;
+        Node_Tree noFilho = this.firstChild;
+        while(noFilho != null){ 
+            soma = noFilho.preorderMedia(soma); 
+            noFilho = null;
         }
-        System.out.println(this.item );
+        if(this.next != null){
+            soma = this.next.preorderMedia(soma);
         }
+        return soma;
+    }
+    
+
+    public Node_Tree getParent() {
+        return parent;
+    }
 }
