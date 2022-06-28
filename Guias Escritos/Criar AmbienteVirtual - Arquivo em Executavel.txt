@@ -1,0 +1,53 @@
+*************Criando Ambiente Virtual*************
+1-) Criar uma pasta/diretório qualquer
+
+2-) Abrir cmd nessa pasta
+
+3-) Instalar virtual virtualenv:
+	pip install virtualenv
+
+4-) Criar uma Sub-Pasta para o Ambiente Virtual
+	py -m venv ./NomeDaSubPasta
+
+5-) Entrar dentro da sub-pasta "Script" criada
+	cd /NomeDaSubPasta
+	cd /Scrripts
+
+6-) Ativar o activate.bat
+	activate.bat
+*************Transformando arquivos .py em Executável*************
+7-) Ambiente Virtual Criado Ativado!
+	Vai estar com a indicação (venv) no terminal
+
+*************Transformando arquivos .py em Executável*************
+
+8-) Entrar na Pasta criada no passo 4-)
+	cd ..
+
+8-) Jogar seu código Python na pasta/diretorio atual
+
+10-) Baixar todas as bibliotecas utilizadas em seu código
+	pip install ...
+
+11-) Baixar biblioteca pyinstaller
+	pip install pyinstaller
+
+12-) Executar comando que trasnforma arquivo .py em .exe
+	pyinstaller --onefile arquivo.py    (opcao 1)
+	pyinstaller --onefile -w arquivo.py (opcao 2: em caso do codigo possuir alguma interface com o usuario)
+
+13-) Serão Criadas:
+	1 Pasta chamada build (Pode apagar)
+	1 Pasta chamada dist  (Arquivo .exe dentro dela)
+	1 arquivo .spec       (Pode apagar)
+
+14-) Arquivo .exe Criado!
+	Vai estar dentro da pasta dist
+
+*************Comandos Auxiliares*************
+
+Comando para mostar bibliotecas instaladas (OBS: Resultados diferentes para python instalado no windows e no Ambiente Virtual)
+	pip freeze
+
+
+

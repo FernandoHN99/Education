@@ -1,6 +1,6 @@
 import javax.naming.spi.DirStateFactory.Result;
 
-public class Jogada {
+public abstract class Jogada implements Interface {
     private final Enum venco1;
     private final Enum venco2;
 
@@ -18,7 +18,5 @@ public class Jogada {
         return result;
     }
 
-    public Enum getTipo(){
-        return Enum.PAPEL;
-    }
+
 }

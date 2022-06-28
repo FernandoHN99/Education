@@ -12,6 +12,8 @@ public class Sistema {
         String resultado = avaliaJogadas(jogada1, jogada2);
         //Exibição do resultado
         System.out.println("Resultado:" + resultado);
+
+        
     }
 
     private static Jogada sortearJogada() {

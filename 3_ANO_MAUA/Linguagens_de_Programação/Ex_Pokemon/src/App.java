@@ -14,6 +14,9 @@ public class App {
         mostraPokemons(pokemons);
         elovuirTodos(pokemons, new Status(1, 1, 1, 1));
         mostraPokemons(pokemons);
+
+        PokemonAgua[] listaPokemon;
+        listaPokemon = new PokemonAgua[1];
     }
 
     public static void mostraPokemons(List<Pokemon> pokemons){

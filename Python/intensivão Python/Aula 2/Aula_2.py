@@ -1,4 +1,5 @@
 import pandas as pd
+import pandas as pd
 import plotly.express as px
 
 # Acessando a Base de Dados
