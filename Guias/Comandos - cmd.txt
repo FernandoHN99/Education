@@ -1,0 +1,19 @@
+*************Comandos CMD*************
+$ Mkdir	<name>				(Create a directory)
+$ Echo <filename>			(Não sei)
+$ touch <filename> 			(Create a file)
+$ rm <filename> 			(Remove a file)
+$ rm -d <directory>			(Remove a directory ONLY empty)
+$ rm -r <directory>			(Remove a directory ALL)
+$ Cat <filename>			(Print file)
+$ Nano <filename>			(Edit a file)
+$ Vim <filename> + insert	(Edit a file)
+(Cont) esc -> :wq Ou		(Salvar e sair)
+(Cont) :q!	 				(Sair) 						
+$ cls 						(Sobe a tela)
+$ Dir 						(Show files and folders)
+$ Code . 					(Open spec folder in VS Code)
+$ cd /d <Disk letter> + :	(Mudar de disco)
+$ tasklist | findstr "Teams.exe"
+$ taskkill /IM Process Name /IM Process Name /F
+$ taskkill /PID PID  /PID PID /F
