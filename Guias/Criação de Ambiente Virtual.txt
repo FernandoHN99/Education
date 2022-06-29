@@ -4,7 +4,7 @@
 
 2-) Abrir cmd nessa pasta
 
-3-) Instalar virtual virtualenv:
+3-) Instalar virtual virtualenv (Somente necessário uma vez):
 		pip install virtualenv
 
 4-) Criar uma Sub-Pasta para o Ambiente Virtual
