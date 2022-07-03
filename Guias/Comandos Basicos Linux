@@ -1,0 +1,22 @@
+************ Comandos Básicos Linux ************
+
+1-) Atualiza os Pacotes do Sistemas
+	sudo dnf check-update
+	
+2-) Atualiza os pacotes que tenham novas dependências
+	sudo dnf upgrade
+
+3-) Procurar Programa / Incluí Procura a descrição do pacote
+	dnf search nome_do_arquivo / dnf search all nome_do_aquivo
+
+4-) Ver "Sobre" o pacote desejado / Listar as dependências para aquele pacote
+	dnf info pacote / dnf repoquery –requires pacote
+	
+4-) Instalar Pacotes
+	sudo dnf install pacote1 pacote2
+	
+5-) Desinstalar Pacotes
+	sudo dnf remove pacote
+
+6-) Instalar um pacote dentro de uma pasta (rpm é o tipo de empacotamento usado no Fedora)
+	sudo dnf install pacote.rpm
