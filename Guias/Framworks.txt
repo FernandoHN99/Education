@@ -1,0 +1,14 @@
+Biblioteca: é o que utilizamos no nosso código
+
+Framwork: usa o nosso código
+
+Exemplos: 
+
+Java 	   --> Hibernate, Spring 
+JavaScript --> Angular
+CSS 	   --> Bootstrap 
+Rub 	   --> RubRails
+PHP        --> laravel
+C#         --> ASP.NET
+Python     --> Django
+
